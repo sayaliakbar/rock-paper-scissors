@@ -48,7 +48,7 @@ The game uses:
 
 ## File Structure
 
-- `rock-paper-scissors.html` - Main HTML file
+- `index.html` - Main HTML file
 - `rock-paper-scissors.css` - Styling for the game
 - `rock-paper-scissors.js` - Game logic and functionality
 - `images/` - Directory containing emoji images for the game
