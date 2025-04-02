@@ -4,6 +4,10 @@ A simple interactive Rock Paper Scissors game built with HTML, CSS, and JavaScri
 
 ![Image](https://github.com/user-attachments/assets/de94cb5c-1ab8-4ecc-833f-6cbe4704be0c)
 
+## Live Demo
+
+Try the game live: [Rock Paper Scissors Game](https://sayaliakbar.github.io/rock-paper-scissors/)
+
 ## Features
 
 - Play Rock Paper Scissors against the computer
