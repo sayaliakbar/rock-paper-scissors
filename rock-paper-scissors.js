@@ -19,9 +19,6 @@ if (!score) {
 let isAutoPlaying = false;
 let intervalId;
 
-//const autoPlay = () => {
-
-//};
 function autoPlay() {
   if (!isAutoPlaying) {
     intervalId = setInterval(() => {
@@ -36,12 +33,10 @@ function autoPlay() {
     clearInterval(intervalId);
     isAutoPlaying = false;
 
-    // Solution for 12t.
     document.querySelector(".js-auto-play-button").innerHTML = "Auto Play";
   }
 }
 
-// Solution for exercise 12s.
 document.querySelector(".js-auto-play-button").addEventListener("click", () => {
   autoPlay();
 });
@@ -125,7 +120,11 @@ function playGame(playerMove) {
 
   document.querySelector(".js-result").innerHTML = result;
 
-  document.querySelector(".js-moves").innerHTML = `You
+  // Show the moves element if not already visible
+  const movesElement = document.querySelector(".js-moves");
+  movesElement.classList.add("show");
+
+  movesElement.innerHTML = `You
 <img src="images/${playerMove}-emoji.png" class="move-icon">
 <img src="images/${computerMove}-emoji.png" class="move-icon">
 Computer`;
