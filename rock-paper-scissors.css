@@ -1,54 +1,281 @@
 body {
-  background-color: rgb(25, 25, 25);
+  background-color: #222;
   color: white;
-  font-family: Arial;
-  display: flex;
+  font-family: Arial, sans-serif;
   text-align: center;
-  flex-direction: column;
+  margin: 0 auto;
+  padding: clamp(5px, 2vw, 20px);
+  box-sizing: border-box;
+  max-width: 1200px;
 }
-
 
 .title {
-  font-size: 30px;
+  font-size: 2.5rem;
   font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 2rem 0;
 }
 
+/* Game controls styling */
 .move-icon {
   height: 50px;
+  transition: transform 0.3s ease;
+  display: block;
+  margin: 0 auto;
 }
 
 .move-button {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.1);
   border: 3px solid white;
   width: 120px;
   height: 120px;
   border-radius: 60px;
-  margin-right: 10px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 10px;
 }
 
-.result {
-  font-size: 25px;
-  font-weight: bold;
-  margin-top: 50px;
+.move-button:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Game information displays */
+.result,
 .score {
-  margin-top: 60px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  display: inline-block;
+  margin: 10px;
 }
 
+/* Buttons styling */
 .reset-score-button,
 .auto-play-button,
-/* Solution for exercise 12x. */
 .reset-confirm-button {
-  background-color: white;
+  background-color: #4CAF50;
+  color: white;
   border: none;
-  font-size: 15px;
-  padding: 8px 15px;
+  font-size: 1rem;
+  padding: 10px 20px;
+  margin: 10px 5px;
   cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Solution for exercise 12x. */
+.reset-score-button:hover,
+.auto-play-button:hover,
+.reset-confirm-button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.reset-score-button {
+  background-color: #f44336;
+}
+
+.reset-score-button:hover {
+  background-color: #d32f2f;
+}
+
+.auto-play-button {
+  background-color: #2196F3;
+}
+
+.auto-play-button:hover {
+  background-color: #0b7dda;
+}
+
 .reset-confirm-button {
   margin-left: 10px;
+  background-color: #ff9800;
+}
+
+.reset-confirm-button:hover {
+  background-color: #e68a00;
+}
+
+/* Layout containers */
+.js-moves {
+  display: none;
+  /* Hide initially */
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+/* Show class to be added via JavaScript */
+.js-moves.show {
+  display: flex;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+    margin: 1.5rem 0;
+  }
+
+  .move-button {
+    width: 100px;
+    height: 100px;
+    border-width: 2px;
+    margin: 0 5px;
+  }
+
+  .move-icon {
+    height: 40px;
+  }
+
+  .result,
+  .score {
+    font-size: 1.3rem;
+    padding: 10px;
+    margin: 10px auto;
+    width: 90%;
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+    margin: 1rem 0;
+  }
+
+  .js-moves {
+    gap: 5px;
+  }
+
+  .move-button {
+    width: 80px;
+    height: 80px;
+    border-width: 2px;
+    margin: 0 3px;
+  }
+
+  .move-icon {
+    height: 30px;
+  }
+
+  .result,
+  .score {
+    font-size: 1.1rem;
+    padding: 8px;
+    width: 90%;
+    max-width: 250px;
+    margin: 8px auto;
+  }
+
+  .reset-score-button,
+  .auto-play-button,
+  .reset-confirm-button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    display: block;
+    margin: 8px auto;
+    width: 90%;
+    max-width: 200px;
+    min-height: 44px;
+  }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 360px) {
+  .title {
+    font-size: 1.5rem;
+    margin: 0.8rem 0;
+  }
+
+  .move-button {
+    width: 70px;
+    height: 70px;
+  }
+
+  .move-icon {
+    height: 25px;
+  }
+
+  .result,
+  .score {
+    font-size: 1rem;
+    padding: 6px;
+  }
+}
+
+/* Landscape orientation handling */
+@media (max-height: 500px) and (orientation: landscape) {
+  .main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin: 5px 0;
+  }
+
+  .js-moves {
+    margin: 0;
+  }
+
+  .details {
+    margin: 0;
+    gap: 5px;
+  }
+
+  .result,
+  .score {
+    font-size: 1rem;
+    padding: 5px;
+    margin: 5px;
+    min-width: unset;
+    max-width: 200px;
+  }
+
+  .reset-score-button,
+  .auto-play-button,
+  .reset-confirm-button {
+    padding: 5px 10px;
+    margin: 3px;
+    font-size: 0.8rem;
+    display: inline-block;
+    width: auto;
+  }
+}
+
+/* Larger screens optimization */
+@media screen and (min-width: 1200px) {
+  .move-button {
+    width: 140px;
+    height: 140px;
+    border-radius: 70px;
+  }
+
+  .move-icon {
+    height: 60px;
+  }
+
+  .result,
+  .score {
+    font-size: 2rem;
+  }
 }
