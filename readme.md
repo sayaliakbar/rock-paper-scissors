@@ -2,7 +2,7 @@
 
 A simple interactive Rock Paper Scissors game built with HTML, CSS, and JavaScript.
 
-![Image](https://github.com/user-attachments/assets/716816a9-db80-487b-a1bf-f69e2f1d0ff6)
+![Image](https://github.com/user-attachments/assets/de94cb5c-1ab8-4ecc-833f-6cbe4704be0c)
 
 ## Features
 
